@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+    agent node2
 
     stages {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_6_1') {
+                withMaven(maven : 'maven_3_5_4') {
                     sh 'mvn clean compile'
                 }
             }
@@ -14,7 +14,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_6_1') {
+                withMaven(maven : 'maven_3_5_4') {
                     sh 'mvn test'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
 
         stage ('install Stage') {
             steps {
-                withMaven(maven : 'maven_3_6_1') {
+                withMaven(maven : 'maven_3_5_4') {
                     sh 'mvn install'
                 }
             }
